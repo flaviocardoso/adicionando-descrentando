@@ -1,5 +1,5 @@
 <template>
-    <div class="less">
+    <div class="addcount">
         <p class="text-center">
         <button type="button" class="btn btn-success bg-success" @click="add">incrementa</button>
         </p>

@@ -17,8 +17,7 @@
     },
     "plugins": [],
     "rules": {
-        "vue/no-multiple-template-root": false,
-        "@volar-plugins/vetur": false
+        "vue/no-multiple-template-root": false
     }
   }
   

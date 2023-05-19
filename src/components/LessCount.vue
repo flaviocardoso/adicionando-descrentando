@@ -1,5 +1,5 @@
 <template>
-    <div class="less">
+    <div class="lesscount">
         <p class="text-center">
         <button type="button" class="btn btn-danger bg-danger" @click="less">decrementa</button>
         </p>
