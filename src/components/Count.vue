@@ -1,19 +1,21 @@
 <template>
   <div class="count">
     <h1>{{ msg }}</h1>
+    <p class="text-center">
+    <span class="alert alert-secondary" role="alert">{{ store.getCount }}</span>
+    </p>
     <div class="card">
-      <p class="text-center">
-        <span class="alert alert-secondary" role="alert">{{ countStore.count }}</span>
-      </p>
-      <p class="text-center">
+        <p class="text-center">
         <button type="button" class="btn btn-success" @click="add">incrementa</button>
-      </p>
-      <p class="text-center">
+        </p>
+        <p class="text-center">
         <button type="button" class="btn btn-danger bg-danger" @click="less">decrementa</button>
-      </p>
+        </p>
     </div>
   </div>
 </template>
+
+
 
 <script lang="ts">
 
@@ -33,18 +35,18 @@ const Count = defineComponent({
     }
   },
   setup() {
-    const countStore = useCount()
+    const store = useCount()
 
     function add() {
-      countStore.increment()
+      store.increment()
     }
 
     function less() {
-      countStore.decrement()
+      store.decrement()
     }
 
     return {
-      countStore,
+      store,
       add,
       less,
     }

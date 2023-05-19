@@ -7,17 +7,24 @@ export const useCount = defineStore({
     }),
     actions: {
         decrement() {
+            if (this.count <= 0) return
             this.count--
         },
         decrementByNumber(n: number) {
-           this.count -= n
+            this.count -= n
         },
         increment() {
             this.count++
         },
         incrementByNumber(n: number) {
             this.count += n
+        },
+        clear() {
+            this.count = 0
         }
+    },
+    getters: {
+        getCount: (state) => state.count,
     }
 });
 
