@@ -1,22 +1,23 @@
 <template>
-    <div class="addcount">
-        <p class="text-center">
-        <button type="button" class="btn btn-success bg-success" @click="add">incrementa</button>
-        </p>
-    </div>
+  <div class="addcount d-grid">
+      <button type="button" class="btn btn-success bg-success btn-lg" @click="add">{{ data.titulo }}</button>
+  </div>
 </template>
 
 <script lang="ts">
 
 import { defineComponent } from 'vue'
 import { useCount } from '@/stores/count'
- 
-interface I {
-  msg: string
-}
+
+const data = { titulo: "Acrescente" }
 
 const AddCount = defineComponent({
   name: "AddCount",
+  data() {
+    return {
+      data
+    }
+  },
   setup() {
     const store = useCount()
 

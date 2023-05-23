@@ -5,23 +5,18 @@
 </template>
 
 <script lang="ts">
-  
-  import { defineComponent, ref } from 'vue'
-   
-  interface I {
-    msg: string
-  }
-  
+
+  import { defineComponent, PropType } from 'vue'
+
   const TitleMessage = defineComponent({
     name: "TitleMessage",
     props: {
-      msg: { 
-        type: String,
-        required: true
+      msg: {
+        type: String
       }
     }
   });
-  
+
   export default TitleMessage;
-  
+
   </script>

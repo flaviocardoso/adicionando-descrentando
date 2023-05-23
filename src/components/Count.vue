@@ -14,14 +14,11 @@
     </div>
   </div>
 </template>
-
-
-
 <script lang="ts">
 
 import { defineComponent, ref } from 'vue'
 import { useCount } from '@/stores/count'
- 
+
 interface I {
   msg: string
 }
@@ -29,7 +26,7 @@ interface I {
 const Count = defineComponent({
   name: "Count",
   props: {
-    msg: { 
+    msg: {
       type: String,
       required: true
     }
@@ -54,5 +51,4 @@ const Count = defineComponent({
 });
 
 export default Count;
-
 </script>
