@@ -7,22 +7,18 @@
   export default Card;
 </script>
 <template>
-  <div class="card">
-    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
-      <slot name="notification"></slot>
-      <span class="visually-hidden">unread messages</span>
-    </span>
-    <h1>
+  <div class="CardStyle">
+    <h1 class="CardTitle">
       <slot name="title"></slot>
     </h1>
-    <div class="card-body">
+    <div class="CardBody">
       <slot name="content"></slot>
     </div>
-    <div class="card-footer">
+    <div class="CardFooter">
       <slot name="footer"></slot>
     </div>
   </div>
 </template>
 <style scoped lang="scss">
-  @import url(./Card.module.scss);
+  @import './Card.module.scss';
 </style>

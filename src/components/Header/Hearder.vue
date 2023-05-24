@@ -15,7 +15,7 @@
 </script>
 <template>
   <header class="HeaderStyle">
-    <h1 class="titulo">{{ data.titulo }}</h1>
+    <h1 class="HeaderTitulo">{{ data.titulo }}</h1>
   </header>
 </template>
 <style scoped lang="scss">

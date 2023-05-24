@@ -1,17 +1,13 @@
 <template>
-  <div class="showcount text-center">
+  <div class="ShowCountStyle">
       <span>{{ count.getCount }}</span>
   </div>
 </template>
 
 <script lang="ts">
 
-  import { defineComponent, ref } from 'vue'
-  import { useCount } from '@/stores/count'
-
-  interface I {
-    msg: string
-  }
+  import { defineComponent } from 'vue';
+  import { useCount } from '@/stores/count';
 
   const ShowCount = defineComponent({
     name: "ShowCount",
@@ -25,4 +21,7 @@
 
   export default ShowCount;
 
-  </script>
+</script>
+<style scoped lang="scss">
+  @import './ShowCountStyle.scss';
+</style>

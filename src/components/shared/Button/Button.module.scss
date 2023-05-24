@@ -1,0 +1,27 @@
+@import '../../../variables.scss';
+
+.ButtonStyle {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  color: #333;
+  background-color: $color-background;
+  border-radius: 4px;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
+  &.danger {
+    background-color: $color-backgrounf-danger;
+    color: #fff;
+  }
+  &.success {
+    background-color: $color-background-sucess;
+    color: #fff;
+  }
+  &.info {
+    background-color: $color-background-info;
+    color: #fff;
+  }
+}

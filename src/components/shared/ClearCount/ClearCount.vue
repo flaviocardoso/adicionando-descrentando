@@ -1,6 +1,6 @@
 <template>
-  <div class="clearcount d-grid">
-    <Button class="btn btn-primary" @click="store.clear">{{ data.titulo }}</Button>
+  <div class="ClearCountStyle BlockButton">
+    <Button class="info" @click="store.clear">{{ data.titulo }}</Button>
   </div>
 </template>
 

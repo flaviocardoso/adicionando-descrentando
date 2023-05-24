@@ -1,6 +1,6 @@
 <template>
-  <div class="lesscount d-grid">
-    <Button class="btn btn-danger bg-danger btn-lg" @click="store.decrement">{{ data.titulo }}</Button>
+  <div class="LessCountStyle BlockButton">
+    <Button type="danger" @click="store.decrement">{{ data.titulo }}</Button>
   </div>
 </template>
 

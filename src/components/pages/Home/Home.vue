@@ -1,9 +1,6 @@
 <template>
   <Card>
     <template #title>
-      <h3 class="text-center">Aumente ou Diminua</h3>
-    </template>
-    <template #notification>
       <ShowCount />
     </template>
     <template #content>
@@ -26,6 +23,7 @@
   import AddCount from '@/components/shared/AddCount/AddCount.vue';
   import LessCount from '@/components/shared/LessCount/LessCount.vue';
   import ClearCount from '@/components/shared/ClearCount/ClearCount.vue';
+  import Button from '@/components/shared/Button/Button.vue'
 
   export default defineComponent({
     name: "Home",
@@ -34,7 +32,8 @@
       ShowCount,
       AddCount,
       LessCount,
-      ClearCount
+      ClearCount,
+      Button
     }
   });
 </script>

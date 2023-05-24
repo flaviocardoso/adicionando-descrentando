@@ -1,7 +1,12 @@
-footer {
+@import '../../variables.scss';
+
+.FooterStyle {
+  display: grid;
+  justify-content: center;
+  padding: 10px;
   background-color: black;
-  text-align: center;
   > h1 {
-    color: aqua;
+    color: $color-background;
+    font-size: 30px;
   }
 }

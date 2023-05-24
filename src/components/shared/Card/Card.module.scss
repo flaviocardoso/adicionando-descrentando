@@ -1,5 +1,18 @@
-.card {
+.CardStyle {
+  border: 1px solid #ddd;
+  border-radius: 3px;
   width: 18rem;
-  padding: .5rem;
+  padding: .8rem;
   margin: 1rem;
+  .CardTitle {
+    padding: 5px 0px;
+  }
+  .CardBody {
+    border-top: 1px solid #ddd;
+    padding: 5px 0px;
+  }
+  .CardFooter {
+    padding-top: 5px;
+    border-top: 1px solid #ddd;
+  }
 }

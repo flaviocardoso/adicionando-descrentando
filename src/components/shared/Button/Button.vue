@@ -1,5 +1,6 @@
 <template>
   <button
+    class="ButtonStyle"
     :class="type"
     :disabled="disabled"
     @click="callback"
@@ -21,3 +22,6 @@
   })
 
 </script>
+<style lang="scss">
+  @import "./Button.module.scss";
+</style>
