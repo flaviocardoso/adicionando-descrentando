@@ -1,11 +1,5 @@
 <script lang="ts">
-  import { defineComponent, PropType } from 'vue';
-
-  interface ICard {
-    title?: string,
-    content?: string,
-    footer?: string
-  }
+  import { defineComponent } from 'vue';
 
   const Card = defineComponent({
     name: "Card"

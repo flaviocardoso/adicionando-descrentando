@@ -1,6 +1,6 @@
 <template>
   <div class="clearcount d-grid">
-    <button type="button" class="btn btn-primary" @click="clear">{{ data.titulo }}</button>
+    <Button class="btn btn-primary" @click="store.clear">{{ data.titulo }}</Button>
   </div>
 </template>
 
@@ -8,6 +8,7 @@
 
 import { defineComponent } from 'vue'
 import { useCount } from '@/stores/count'
+import Button from '@/components/shared/Button/Button.vue';
 
 const data = { titulo: "Limpar" }
 
@@ -20,15 +21,12 @@ const ClearCount = defineComponent({
   },
   setup() {
     const store = useCount()
-
-    function clear() {
-      store.clear()
-    }
-
     return {
-      store,
-      clear,
+      store
     }
+  },
+  components: {
+    Button
   }
 });
 

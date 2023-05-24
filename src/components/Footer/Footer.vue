@@ -12,5 +12,5 @@
   </footer>
 </template>
 <style scoped lang="scss">
-  @import url(./Footer.module.scss);
+  @import "./Footer.module.scss"
 </style>

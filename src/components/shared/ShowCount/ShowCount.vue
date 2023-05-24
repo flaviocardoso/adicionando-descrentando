@@ -17,7 +17,6 @@
     name: "ShowCount",
     setup() {
       const count = useCount()
-
       return {
         count
       }

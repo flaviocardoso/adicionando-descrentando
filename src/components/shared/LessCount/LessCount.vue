@@ -1,13 +1,14 @@
 <template>
   <div class="lesscount d-grid">
-    <button type="button" class="btn btn-danger bg-danger btn-lg" @click="less">{{ data.titulo }}</button>
+    <Button class="btn btn-danger bg-danger btn-lg" @click="store.decrement">{{ data.titulo }}</Button>
   </div>
 </template>
 
 <script lang="ts">
 
-import { defineComponent, render } from 'vue'
+import { defineComponent } from 'vue'
 import { useCount } from '@/stores/count'
+import Button from '@/components/shared/Button/Button.vue';
 
 const data = { titulo: "Diminua" }
 
@@ -19,21 +20,13 @@ const LessCount = defineComponent({
     }
   },
   setup() {
-    const store = useCount()
-
-    function less() {
-      store.decrement()
-    }
-
+    const store = useCount();
     return {
-      store,
-      less,
+      store
     }
   },
-  methods: {
-    less() {
-      this.less()
-    }
+  components: {
+    Button
   }
 });
 

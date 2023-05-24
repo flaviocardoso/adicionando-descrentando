@@ -19,5 +19,5 @@
   </header>
 </template>
 <style scoped lang="scss">
-  @import url(./Header.module.scss);
+  @import "./Header.module.scss";
 </style>
