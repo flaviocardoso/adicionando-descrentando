@@ -8,9 +8,9 @@
 </script>
 <template>
   <div class="CardStyle">
-    <h1 class="CardTitle">
+    <div class="CardTitle">
       <slot name="title"></slot>
-    </h1>
+    </div>
     <div class="CardBody">
       <slot name="content"></slot>
     </div>

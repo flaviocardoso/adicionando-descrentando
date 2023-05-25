@@ -17,9 +17,9 @@
         <TextCenter>TWO NUMBERS</TextCenter>
       </template>
       <template #content>
-        <BLock>FIRST</BLock>
-        <BLock>OPERATION</BLock>
-        <BLock>SECOND</BLock>
+        <Block>FIRST</Block>
+        <Block>OPERATION</Block>
+        <Block>SECOND</Block>
       </template>
       <template #footer>
         <Block>RESULT</Block>
@@ -36,7 +36,7 @@
   import ClearCount from '@/components/shared/ClearCount/ClearCount.vue';
   import Button from '@/components/shared/Button/Button.vue';
   import TextCenter from '@/components/shared/TextCenter/TextCenter.vue';
-  import BLock from '@/components/shared/Block/Block.vue';
+  import Block from '@/components/shared/Block/Block.vue';
 
   export default defineComponent({
     name: "Home",
@@ -48,7 +48,7 @@
       ClearCount,
       Button,
       TextCenter,
-      BLock
+      Block
     }
   });
 </script>
