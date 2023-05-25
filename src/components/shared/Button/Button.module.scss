@@ -1,4 +1,4 @@
-@import '../../../variables.scss';
+@import '@/variables.scss';
 
 .ButtonStyle {
   padding: 10px 20px;
@@ -14,14 +14,14 @@
   }
   &.danger {
     background-color: $color-backgrounf-danger;
-    color: #fff;
+    color: $color-background;
   }
   &.success {
     background-color: $color-background-sucess;
-    color: #fff;
+    color: $color-background;
   }
   &.info {
     background-color: $color-background-info;
-    color: #fff;
+    color: $color-background;
   }
 }

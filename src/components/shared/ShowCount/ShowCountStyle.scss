@@ -1,5 +1,9 @@
+@import '@/variables.scss';
+
 .ShowCountStyle {
-  text-align: center;
   font-size: 2rem;
   font-weight: bold;
+  > span {
+    color: $color-show;
+  }
 }

@@ -1,6 +1,8 @@
 <template>
   <div class="ShowCountStyle">
-      <span>{{ count.getCount }}</span>
+    <TextCenter>
+      {{ count.getCount }}
+    </TextCenter>
   </div>
 </template>
 
@@ -8,6 +10,7 @@
 
   import { defineComponent } from 'vue';
   import { useCount } from '@/stores/count';
+  import TextCenter from '@/components/shared/TextCenter/TextCenter.vue'
 
   const ShowCount = defineComponent({
     name: "ShowCount",
@@ -16,6 +19,9 @@
       return {
         count
       }
+    },
+    components: {
+      TextCenter
     }
   });
 

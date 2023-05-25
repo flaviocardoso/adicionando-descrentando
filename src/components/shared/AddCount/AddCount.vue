@@ -1,7 +1,7 @@
 <template>
-  <div class="AddCountStyle BlockButton">
-      <Button type="success" @click="add">{{ data.titulo }}</Button>
-  </div>
+  <Block class="AddCountStyle">
+    <Button type="success" @click="add">{{ data.titulo }}</Button>
+  </Block>
 </template>
 
 <script lang="ts">
@@ -9,6 +9,7 @@
 import { defineComponent } from 'vue';
 import { useCount } from '@/stores/count';
 import Button from '@/components/shared/Button/Button.vue';
+import Block from '../Block/Block.vue';
 
 const data = { titulo: "Acrescente" }
 
@@ -32,7 +33,8 @@ const AddCount = defineComponent({
     }
   },
   components: {
-    Button
+    Button,
+    Block
   }
 });
 

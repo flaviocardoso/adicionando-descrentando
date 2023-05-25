@@ -1,20 +1,31 @@
 <template>
-  <Card>
-    <template #title>
-      <ShowCount />
-    </template>
-    <template #content>
-      <div class="d-grid gap-2">
+  <section class="HomeStyle">
+    <Card>
+      <template #title>
+        <ShowCount />
+      </template>
+      <template #content>
         <AddCount />
         <LessCount />
-      </div>
-    </template>
-    <template #footer>
-      <div class="d-grid">
+      </template>
+      <template #footer>
         <ClearCount />
-      </div>
-    </template>
-  </Card>
+      </template>
+    </Card>
+    <Card>
+      <template #title>
+        <TextCenter>TWO NUMBERS</TextCenter>
+      </template>
+      <template #content>
+        <BLock>FIRST</BLock>
+        <BLock>OPERATION</BLock>
+        <BLock>SECOND</BLock>
+      </template>
+      <template #footer>
+        <Block>RESULT</Block>
+      </template>
+    </Card>
+  </section>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
@@ -23,7 +34,9 @@
   import AddCount from '@/components/shared/AddCount/AddCount.vue';
   import LessCount from '@/components/shared/LessCount/LessCount.vue';
   import ClearCount from '@/components/shared/ClearCount/ClearCount.vue';
-  import Button from '@/components/shared/Button/Button.vue'
+  import Button from '@/components/shared/Button/Button.vue';
+  import TextCenter from '@/components/shared/TextCenter/TextCenter.vue';
+  import BLock from '@/components/shared/Block/Block.vue';
 
   export default defineComponent({
     name: "Home",
@@ -33,7 +46,12 @@
       AddCount,
       LessCount,
       ClearCount,
-      Button
+      Button,
+      TextCenter,
+      BLock
     }
   });
 </script>
+<style scoped lang="scss">
+  @import './Home.module.scss';
+</style>
