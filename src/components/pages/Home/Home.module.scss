@@ -1,7 +1,6 @@
 .HomeStyle {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 1rem;
-  padding: 1rem;
+  display: block;
+  .titulo {
+    padding: 1rem 1rem;
+  }
 }

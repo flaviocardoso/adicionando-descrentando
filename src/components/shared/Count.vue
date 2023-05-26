@@ -1,23 +1,25 @@
 <template>
-  <div class="count">
-    <h1>{{ msg }}</h1>
-    <p class="text-center">
-    <span class="alert alert-secondary" role="alert">{{ store.getCount }}</span>
-    </p>
-    <div class="card">
-        <p class="text-center">
-        <button type="button" class="btn btn-success" @click="add">incrementa</button>
-        </p>
-        <p class="text-center">
-        <button type="button" class="btn btn-danger bg-danger" @click="less">decrementa</button>
-        </p>
-    </div>
-  </div>
+  <Card>
+    <template #title>
+      <ShowCount />
+    </template>
+    <template #content>
+      <AddCount />
+      <LessCount />
+    </template>
+    <template #footer>
+      <ClearCount />
+    </template>
+  </Card>
 </template>
 <script lang="ts">
 
-import { defineComponent, ref } from 'vue'
-import { useCount } from '@/stores/count'
+import { defineComponent, ref } from 'vue';
+import Card from './Card/Card.vue';
+import ShowCount from './ShowCount/ShowCount.vue';
+import AddCount from './AddCount/AddCount.vue';
+import ClearCount from './ClearCount/ClearCount.vue';
+import LessCount from './LessCount/LessCount.vue';
 
 interface I {
   msg: string
@@ -25,28 +27,12 @@ interface I {
 
 const Count = defineComponent({
   name: "Count",
-  props: {
-    msg: {
-      type: String,
-      required: true
-    }
-  },
-  setup() {
-    const store = useCount()
-
-    function add() {
-      store.increment()
-    }
-
-    function less() {
-      store.decrement()
-    }
-
-    return {
-      store,
-      add,
-      less,
-    }
+  components: {
+    Card,
+    ShowCount,
+    AddCount,
+    ClearCount,
+    LessCount
   }
 });
 
