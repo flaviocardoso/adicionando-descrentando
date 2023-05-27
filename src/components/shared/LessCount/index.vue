@@ -1,6 +1,6 @@
 <template>
   <Block class="LessCountStyle">
-    <Button type="danger" @click="store.decrement">{{ data.titulo }}</Button>
+    <Button type="danger" @click="diminuir">{{ data.titulo }}</Button>
   </Block>
 </template>
 
@@ -8,8 +8,8 @@
 
 import { defineComponent } from 'vue'
 import { useCount } from '@/stores/count'
-import Button from '@/components/shared/Button/Button.vue';
-import Block from '@/components/shared/Block/Block.vue';
+import Button from '../Button';
+import Block from '../Block';
 
 const data = { titulo: "Diminua" }
 
@@ -22,8 +22,13 @@ const LessCount = defineComponent({
   },
   setup() {
     const store = useCount();
+
+    function diminuir() {
+      store.decrement();
+    }
+
     return {
-      store
+      diminuir,
     }
   },
   components: {

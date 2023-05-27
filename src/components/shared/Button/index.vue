@@ -13,7 +13,7 @@
   import { defineComponent, PropType } from 'vue';
 
   export default defineComponent({
-    name: "Button",
+    name: "ButtonVue",
     props: {
       type: String,
       disabled: Boolean,
@@ -22,6 +22,6 @@
   })
 
 </script>
-<style lang="scss">
-  @import "./Button.module.scss";
+<style scoped lang="scss">
+  @import "./_.scss";
 </style>

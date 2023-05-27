@@ -5,11 +5,11 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import Count from '@/components/shared/Count.vue';
-  import TwoNumbers from '@/components/shared/TwoNumbers.vue';
+  import Count from '../Count';
+  import TwoNumbers from '../TwoNumbers';
 
   export default defineComponent({
-    name: "Home",
+    name: "CardGridVue",
     components: {
       Count,
       TwoNumbers
@@ -17,5 +17,5 @@
   });
 </script>
 <style scoped lang="scss">
-  @import './CardGrid.module.scss';
+  @import './_.scss';
 </style>

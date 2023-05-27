@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import Home from '@/components/pages/Home/Home.vue';
+  import Home from '@/layouts/Home';
 
   export default defineComponent({
     name: "Main",

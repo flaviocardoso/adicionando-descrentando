@@ -8,8 +8,8 @@
 
 import { defineComponent } from 'vue';
 import { useCount } from '@/stores/count';
-import Button from '@/components/shared/Button/Button.vue';
-import Block from '../Block/Block.vue';
+import Button from '../Button';
+import Block from '../Block';
 
 const data = { titulo: "Acrescente" }
 
@@ -28,14 +28,13 @@ const AddCount = defineComponent({
     }
 
     return {
-      store,
       add,
     }
   },
   components: {
     Button,
     Block
-  }
+  },
 });
 
 export default AddCount;

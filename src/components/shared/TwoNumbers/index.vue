@@ -4,9 +4,10 @@
       <TextCenter>TWO NUMBERS</TextCenter>
     </template>
     <template #content>
-      <BLock>FIRST</Block>
-      <Block>OPERATION</Block>
-      <Block>SECOND</Block>
+      <Block> - FIRST - </Block>
+      <Block> - OPERATION - </Block>
+      <Block> - SECOND - </Block>
+      <Block> - EQUAL - </Block>
     </template>
     <template #footer>
       <Block>RESULT</Block>
@@ -15,16 +16,16 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import BLock from './Block/Block.vue';
-import Card from './Card/Card.vue';
-  import TextCenter from './TextCenter/TextCenter.vue';
+  import Block from '../Block';
+  import Card from '../Card';
+  import TextCenter from '../TextCenter';
 
   export default defineComponent({
     name: "TwoNumbers",
     components: {
-    TextCenter,
-    BLock,
-    Card
-}
+      TextCenter,
+      Block,
+      Card
+    }
   });
 </script>

@@ -1,11 +1,3 @@
-<script lang="ts">
-  import { defineComponent } from 'vue';
-
-  const Card = defineComponent({
-    name: "Card"
-  });
-  export default Card;
-</script>
 <template>
   <div class="CardStyle">
     <div class="CardTitle">
@@ -19,6 +11,14 @@
     </div>
   </div>
 </template>
+  <script lang="ts">
+    import { defineComponent } from 'vue';
+
+    const Card = defineComponent({
+      name: "CardVue"
+    });
+    export default Card;
+  </script>
 <style scoped lang="scss">
-  @import './Card.module.scss';
+  @import './_.scss';
 </style>

@@ -1,14 +1,14 @@
 <template>
-  <div class="TextCenterStyle">
+  <div class="BlockStyle">
     <slot></slot>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   export default defineComponent({
-    name: "TextContent"
+    name: "BlockVue"
   });
 </script>
-<style scoped lang="scss">
-  @import './TextCenter.module.scss';
+<style scope lang="scss">
+  @import './_.scss';
 </style>
