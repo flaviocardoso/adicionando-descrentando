@@ -19,12 +19,15 @@
     "lib": ["esnext", "dom",
       "dom.iterable",
       "scripthost"],
-    "types": ["vite/client"],
+    "types": [
+      "vite/client",
+      "cypress"
+    ],
     "plugins": [
       { "name": "@vuedx/typescript-plugin-vue" }
     ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.html"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.cy.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.html"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": [
     "node_modules"
