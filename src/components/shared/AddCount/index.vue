@@ -28,6 +28,7 @@ const AddCount = defineComponent({
     }
 
     return {
+      store,
       add,
     }
   },
