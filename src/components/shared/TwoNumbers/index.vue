@@ -56,13 +56,13 @@
     setup() {
       const pNumero = ref<number>(0);
       const sNumero = ref<number>(0);
-      const op = ref('+');
+      const op = ref<OPMATH>('+');
       const resultado = ref<number>();
       const opValues = ref(opMathValues);
 
-      function acaoIgual() {
-        let valorOp = op.value as OPMATH;
-        resultado.value = opMathFunc[valorOp](pNumero.value, sNumero.value)
+      function acaoIgual(): void {
+        // TODO let valorOp = op.value as OPMATH;
+        resultado.value = opMathFunc[op.value](pNumero.value, sNumero.value)
       }
 
       return {
