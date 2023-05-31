@@ -66,7 +66,7 @@
 
       function acaoIgual() {
         if (op.value && opMathSign.includes(op.value?.value)) {
-          let valorOp: OPMATH = op.value.value as OPMATH;
+          let valorOp = op.value.value as OPMATH;
           resultado.value = opMathFunc[valorOp](Number(pNumero.value?.value), Number(sNumero.value?.value))
         } else {
           resultado.value = opMathFunc['+'](Number(pNumero.value?.value), Number(sNumero.value?.value))
