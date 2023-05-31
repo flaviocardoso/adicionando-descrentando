@@ -6,18 +6,15 @@
       </template>
       <template #content>
         <Block>
-          <input class="numero" type="number" ref="pNumero" placeholder="Primeiro número"/>
+          <input class="numero" type="number" v-model.number="pNumero" placeholder="Primeiro número"/>
         </Block>
         <Block>
-          <select class="operador" ref="op">
-            <option value="+">+</option>
-            <option value="-">-</option>
-            <option value="*">*</option>
-            <option value="/">/</option>
+          <select class="operador" v-model="op">
+            <option v-for="( value , key ) in opValues" :value=key>{{ value }}</option>
           </select>
         </Block>
         <Block>
-          <input  class="numero" type="number" ref="sNumero" placeholder="Segundo número"/>
+          <input  class="numero" type="number" v-model.number="sNumero" placeholder="Segundo número"/>
         </Block>
         <Block>
           <Button type="success" @click="acaoIgual">=</Button>
@@ -39,49 +36,43 @@
   import TextCenter from '../TextCenter';
 
   const opMathFunc = {
-    "+" : (a: any, b: any) => a + b,
-    "-" : (a: any, b: any) => a - b,
-    "*" : (a: any, b: any) => a * b,
-    "/" : (a: any, b: any) => (a / b).toFixed(2)
+    "+" : (a: number, b: number) => a + b,
+    "-" : (a: number, b: number) => a - b,
+    "*" : (a: number, b: number) => a * b,
+    "/" : (a: number, b: number) => Number((a / b).toFixed(2))
   }
 
   type OPMATH = "+" | "-" | "*" | "/";
 
   const opMathValues = {
-    "+" : "Adicionar",
-    "-" : "Diminuir",
-    "*" : "Multiplicar",
-    "/" : "Dividir"
+    "+" : "ADICIONAR",
+    "-" : "DIMINIR",
+     "*" :  "MULTIPLICAR",
+    "/" : "DIVIDIR"
   }
-
-  const opMathSign = ["+", "-", "*", "/"];
 
   export default defineComponent({
     name: "TwoNumbers",
     setup() {
-      const pNumero = ref<HTMLInputElement>();
-      const sNumero = ref<HTMLInputElement>();
-      const op = ref<HTMLSelectElement>();
-      const resultado = ref(0);
+      const pNumero = ref<number>(0);
+      const sNumero = ref<number>(0);
+      const op = ref('+');
+      const resultado = ref<number>();
+      const opValues = ref(opMathValues);
 
       function acaoIgual() {
-        if (op.value && opMathSign.includes(op.value?.value)) {
-          let valorOp = op.value.value as OPMATH;
-          resultado.value = opMathFunc[valorOp](Number(pNumero.value?.value), Number(sNumero.value?.value))
-        } else {
-          resultado.value = opMathFunc['+'](Number(pNumero.value?.value), Number(sNumero.value?.value))
-        }
+        let valorOp = op.value as OPMATH;
+        resultado.value = opMathFunc[valorOp](pNumero.value, sNumero.value)
       }
 
       return {
+        opValues,
         pNumero,
         sNumero,
         op,
         resultado,
         acaoIgual
       }
-    },
-    mounted() {
     },
     components: {
         TextCenter,
