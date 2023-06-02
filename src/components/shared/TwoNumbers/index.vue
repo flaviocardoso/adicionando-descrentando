@@ -2,9 +2,9 @@
   <div class="TwoNumbers">
     <Card class="TwoNumbers__cartao">
       <template #title>
-          <TextCenter>
-            TWO NUMBERS
-          </TextCenter>
+        <TextCenter>
+          TWO NUMBERS
+        </TextCenter>
       </template>
       <template #content>
         <input class="TwoNumbers__input" type="number" v-model.number="pNumero" placeholder="Primeiro número"/>
@@ -12,7 +12,6 @@
           <select class="TwoNumbers__input" v-model="op">
             <option v-for="( value , key ) in opValues" :value=key>{{ value }}</option>
           </select>
-
         </Block>
         <input  class="TwoNumbers__input" type="number" v-model.number="sNumero" placeholder="Segundo número"/>
         <Block class="TwoNumbers__botao">
