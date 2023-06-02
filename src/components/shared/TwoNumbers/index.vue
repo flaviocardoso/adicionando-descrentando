@@ -1,29 +1,29 @@
 <template>
   <div class="TwoNumbers">
-    <Card>
+    <Card class="TwoNumbers__cartao">
       <template #title>
-        <TextCenter>TWO NUMBERS</TextCenter>
+          <TextCenter>
+            TWO NUMBERS
+          </TextCenter>
       </template>
       <template #content>
+        <input class="TwoNumbers__input" type="number" v-model.number="pNumero" placeholder="Primeiro número"/>
         <Block>
-          <input class="numero" type="number" v-model.number="pNumero" placeholder="Primeiro número"/>
-        </Block>
-        <Block>
-          <select class="operador" v-model="op">
+          <select class="TwoNumbers__input" v-model="op">
             <option v-for="( value , key ) in opValues" :value=key>{{ value }}</option>
           </select>
+
         </Block>
-        <Block>
-          <input  class="numero" type="number" v-model.number="sNumero" placeholder="Segundo número"/>
-        </Block>
-        <Block>
-          <Button type="success" @click="acaoIgual">=</Button>
+        <input  class="TwoNumbers__input" type="number" v-model.number="sNumero" placeholder="Segundo número"/>
+        <Block class="TwoNumbers__botao">
+          <Button class="TwoNumbers__botaoclean" type="danger" @click="acaoLimpar">C</Button>
+          <Button class="TwoNumbers__botaoresultado" type="info" @click="acaoIgual">=</Button>
         </Block>
       </template>
       <template #footer>
-        <Block>
-          <span class="resultado">{{ resultado }}</span>
-        </Block>
+        <TextCenter v-if="resultado !== undefined">
+          <span class="TwoNumbers__resultado">{{ resultado }}</span>
+        </TextCenter>
       </template>
     </Card>
   </div>
@@ -37,9 +37,9 @@
 
   const opMathFunc = {
     "+" : (a: number, b: number) => a + b,
-    "-" : (a: number, b: number) => a - b,
-    "*" : (a: number, b: number) => a * b,
-    "/" : (a: number, b: number) => Number((a / b).toFixed(2))
+    "-" : (a: number, b: number) => Number((a - b).toFixed(9)),
+    "*" : (a: number, b: number) => Number((a * b).toFixed(9)),
+    "/" : (a: number, b: number) => Number((a / b).toFixed(9))
   }
 
   type OPMATH = "+" | "-" | "*" | "/";
@@ -65,13 +65,20 @@
         resultado.value = opMathFunc[op.value](pNumero.value, sNumero.value)
       }
 
+      const acaoLimpar = (): void => {
+        pNumero.value = 0;
+        sNumero.value = pNumero.value;
+        resultado.value = undefined;
+      }
+
       return {
         opValues,
         pNumero,
         sNumero,
         op,
         resultado,
-        acaoIgual
+        acaoIgual,
+        acaoLimpar
       }
     },
     components: {
