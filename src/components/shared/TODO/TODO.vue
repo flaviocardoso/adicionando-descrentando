@@ -37,13 +37,7 @@
 
   const titleDODO = "Lista TODO";
 
-  const listaTODO = [
-    { id: 1, conteudo: "item 1", prioridade: 1 },
-    { id: 2, conteudo: "item 2", prioridade: 2 },
-    { id: 3, conteudo: "item 3", prioridade: 1 },
-    { id: 4, conteudo: "item 4", prioridade: 3 },
-    { id: 5, conteudo: "item 5", prioridade: 3},
-  ];
+  const listaTODO: Array<listaT> = [];
 
   interface listaT {
     id: number,
@@ -63,12 +57,6 @@
       const conteudo = ref<string>("");
       const prioridade = ref<number>(1);
 
-      const reverseLista = (lista: Array<listaT>): Array<listaT> => {
-        return [...lista].reverse();
-      }
-
-      lista.value = reverseLista(lista.value);
-
       const adicionarNaLista = (): void => {
         lista.value = [
           {
@@ -76,7 +64,7 @@
             conteudo: conteudo.value,
             prioridade: prioridade.value
           },
-          ...lista.value
+          ...lista.value,
         ]
         conteudo.value = "";
         prioridade.value = 1;
