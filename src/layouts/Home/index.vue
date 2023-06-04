@@ -1,3 +1,6 @@
+
+import TODO from '@/components/shared/TODO/TODO.vue';
+
 <template>
   <section class="HomeStyle">
     <header class="titulo">Home :></header>
@@ -5,6 +8,9 @@
       <Count />
       <TwoNumbers />
     </CardGrid>
+  </section>
+  <section class="HomeStyle">
+    <TODO />
   </section>
 </template>
 <script src="./_" lang="ts"></script>
