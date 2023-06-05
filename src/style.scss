@@ -66,6 +66,10 @@ button {
 	box-sizing: border-box;
 	text-decoration: none;
 }
-
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
 // @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
