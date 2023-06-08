@@ -1,47 +1,46 @@
 <template>
   <div class="TODOStyle">
     <header>
-      <h3>{{ titleTODO }}</h3>
-      <p>
-        <form
+      <h3 class="TODOStyle__titulo">{{ titleTODO }}</h3>
+      <form
           class="TODOStyle__form"
           id="listaform_item"
           @submit.prevent="adicionarNaLista">
           &nbsp;
-          <input
-            type="text"
-            name="conteudo"
-            class="TODOStyle__input"
-            id="conteudo_item"
-            v-model.trim="conteudo"
-            title="Insira no conteúdo do item"
-            placeholder="tópico do item" />
-          &nbsp;
-          <select
-            name="prioridade"
-            class="TODOStyle__select"
-            id="prioridade_item"
-            title="Escolha a prioridade"
-            v-model.number="prioridade">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          &nbsp;
-          <button
-            title="Aperte o botão para confirmar"
-            id="enviar_item"
-            :disabled="conteudo.length < 5"
-          >
-            adicionar
-          </button>
-        </form>
-      </p>
+        <input
+          type="text"
+          name="conteudo"
+          class="TODOStyle__input"
+          id="conteudo_item"
+          v-model.trim="conteudo"
+          title="Insira no conteúdo do item"
+          placeholder="tópico do item" />
+        &nbsp;
+        <select
+          name="prioridade"
+          class="TODOStyle__select"
+          id="prioridade_item"
+          title="Escolha a prioridade"
+          v-model.number="prioridade">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        &nbsp;
+        <button
+          title="Aperte o botão para confirmar"
+          id="enviar_item"
+          class="TODOStyle__botao TODOStyle__botaosuccess"
+          :disabled="conteudo.length < 5"
+        >
+          adicionar
+        </button>
+      </form>
     </header>
-    <section>
-      <ul>
+    <section class="TODOStyle__conteudo">
+      <ul class="TODOStyle__lista">
         <li
-          class="TODOStyle__lista "
+          class="TODOStyle__item"
           v-for="(item, index) in listaOrdenada"
           :key="item.id"
         >
@@ -50,13 +49,11 @@
               type="text"
               v-model.trim="editarConteudo"
             />
-            &nbsp;
-            <button
+            <LapisUpdate
               title="Editar o conteúdo"
               :disabled="editarConteudo.length < 5"
-              @click="editarNaLista(item.id)">
-              [ E ]
-            </button>
+              @click="editarNaLista(item.id)"
+            />
           </template>
           <template v-else>
             <input
@@ -69,19 +66,15 @@
               :class="{TODOStyle__riscar : item.feito}">
               {{ item.conteudo }}
             </label>
-            &nbsp;
-            <button
-              title="Habilite para editar o conteúdo"
-              @click="editarHabilitar(item.id)">
-              [ E ]
-            </button>
+            <LapisUpdate
+            title="Habilite para editar o conteúdo"
+            @click="editarHabilitar(item.id)"
+            />
           </template>
-          &nbsp;
-          <button
+          <LixoDelete
             title="Remova o item"
-            @click="removerNaLista(item.id)">
-            [ D ]
-          </button>
+            @click="removerNaLista(item.id)"
+          />
         </li>
       </ul>
     </section>
@@ -89,6 +82,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
+  import LapisUpdate from '@/assets/IconUpdate.vue';
+  import LixoDelete from '@/assets/IconDelete.vue';
 
   const titleTODO = "Lista TODO";
 
@@ -186,6 +181,10 @@
       listaOrdenada : function () {
         return [...this.lista].sort((a, b) => a.prioridade - b.prioridade)
       }
+    },
+    components: {
+      LapisUpdate,
+      LixoDelete
     }
 
   })

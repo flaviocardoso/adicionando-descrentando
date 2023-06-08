@@ -1,6 +1,88 @@
 .TODOStyle {
+  &__titulo {
+    margin: 0;
+    padding: .5rem 1rem;
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: rgba($color: #231818, $alpha: 0.75);
+    background-color: rgba($color: #d3d2d2, $alpha: 0.5);
+    &::after, &::before {
+      content: ' + ';
+    }
+  }
+  &__form {
+    padding: 10px 0;
+    background-color: rgba($color: #049302, $alpha: 0.5);
+  }
+  &__input {
+    margin-left: 5px;
+    padding: 5px 10px;
+    color: rgba($color:rgb(98, 84, 84), $alpha: 1.0);
+    width: 20rem;
+    border: 1px solid;
+    border-radius: 10px;
+  }
+  &__select {
+    padding: 5px 5px;
+    width: 2.5rem;
+    color: rgba($color:rgb(98, 84, 84), $alpha: 1.0);
+    border: 1px solid;
+    border-radius: 10px;
+  }
+  &__botao {
+    margin: 0 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+    color: rgba($color:rgb(84, 84, 84), $alpha: 1);
+    background-color: rgba($color: #ededed, $alpha: 1.0);
+    text-transform: uppercase;
+    border: 1px solid;
+    border-radius: 10px;
+    &success {
+      color: rgba($color:rgb(232, 232, 232), $alpha: 1);
+      background-color: rgba($color: #4a905d, $alpha: 1);
+    }
+    &:disabled {
+      color: rgba($color:rgb(84, 84, 84), $alpha: 0);
+      background-color: rgba($color: #ededed, $alpha: 0);
+    }
+  }
   &__riscar {
     text-decoration: line-through;
     color: rgba($color: #000000, $alpha: 0.5)
+  }
+  &__lista {
+    margin: 0;
+    padding: 0;
+    > :nth-child(2n) {
+      background-color: rgba($color: rgb(247, 247, 247), $alpha: 1.0);
+    }
+    > :nth-child(2n+1) {
+      background-color: rgba($color: rgb(203, 203, 203), $alpha: 1.0);
+    }
+  }
+  &__item {
+    list-style: none;
+    border-bottom: 1px solid rgba(#000000, .5);
+    input[type=checkbox] {
+      visibility: hidden;
+    }
+    input[type=text] {
+      margin: auto;
+      padding: 3px 5px;
+      width: 95%;
+      border: 0;
+      border-radius: 5px;
+      margin: .3rem 1rem;
+    }
+    label {
+      display: inline-block;
+      width: 95%;
+      padding: 1rem;
+      margin: auto;
+    }
+    :nth-last-child(2){
+      margin-left: 1.3rem;
+    }
   }
 }
