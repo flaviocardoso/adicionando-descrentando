@@ -82,8 +82,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import LapisUpdate from '@/assets/IconUpdate.vue';
-  import LixoDelete from '@/assets/IconDelete.vue';
+  import LapisUpdate from '@/components/shared/IconUpdate.vue';
+  import LixoDelete from '@/components/shared/IconDelete.vue';
 
   const titleTODO = "Lista TODO";
 

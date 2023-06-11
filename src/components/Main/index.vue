@@ -1,16 +1,17 @@
 <template>
   <main class="MainStyle">
-    <Home />
+    <br>
+    <MyNavegation />
+    <br>
+    <router-view />
   </main>
 </template>
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import Home from '@/layouts/Home';
+import { defineComponent } from 'vue';
+import MyNavegation from '../MyNavegation';
 
-  export default defineComponent({
-    name: "Main",
-    components: {
-      Home
-    }
-  });
+export default defineComponent({
+  name: "Main",
+  components: { MyNavegation }
+});
 </script>

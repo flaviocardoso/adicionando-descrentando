@@ -6,6 +6,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "moduleResolution": "node",
     "isolatedModules": true,
     "strict": true,
@@ -27,7 +28,7 @@
       { "name": "@vuedx/typescript-plugin-vue" }
     ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.cy.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.html"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.cy.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.html", "src/**/*.json"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": [
     "node_modules"
