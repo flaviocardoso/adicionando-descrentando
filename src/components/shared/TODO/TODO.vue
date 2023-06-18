@@ -84,80 +84,49 @@
 import { ref, computed } from 'vue';
 import LapisUpdate from '@/components/shared/IconUpdate.vue';
 import LixoDelete from '@/components/shared/IconDelete.vue';
+import { useTODO } from '@/stores/todo';
 
-const listaTODO: Array<listaT> = [];
-
-interface listaT {
-  id: number,
-  conteudo: string,
-  prioridade: number,
-  feito: boolean
-}
-
+const listaTODO = useTODO();
 const titleTODO = ref("Lista TODO");
-const lista = ref<Array<listaT>>(listaTODO);
+const lista = ref(listaTODO);
 const conteudo = ref<string>("");
 const prioridade = ref<number>(1);
 const editarItem = ref();
 const editarConteudo = ref("");
 
-// TODO Pegar último item (C[R]UD)
-const pegarUltimoItemId = (lista: Array<listaT>): number => {
-  const lastItem = [...lista].shift();
-  let id = 1;
-  if (lastItem?.id) { id += lastItem.id; }
-  return id;
-}
 // TODO Adicianr itens na lista ([C]RUD)
 const adicionarNaLista = (): void => {
-  const id = pegarUltimoItemId([...lista.value]);
+  let item = {
+    conteudo: conteudo.value,
+    prioridade: prioridade.value,
+  }
+  listaTODO.adicionar(item);
 
-  lista.value = [
-    {
-      id,
-      conteudo: conteudo.value,
-      prioridade: prioridade.value,
-      feito: false
-    },
-    ...lista.value,
-  ]
   conteudo.value = "";
   prioridade.value = 1;
 };
 // TODO Remover da lista (CRU[D])
 const removerNaLista = (id: number) : void => {
-  lista.value = lista.value.filter(item => item.id !== id)
+  listaTODO.remover(id);
 }
 // TODO Editar o conteúdo (CR[U]D)
 const editarNaLista = (id: number) : void => {
-  lista.value.map(item => {
-    if (item.id === id) {
-      item.conteudo = editarConteudo.value;
-    }
-  });
+  listaTODO.editar(id, editarConteudo.value);
   editarConteudo.value = "";
   editarItem.value = "";
 }
 // TODO Editar Habilidado
 const editarHabilitar = (id: number) : void => {
-  lista.value.map(item => {
-    if (item.id === id) {
-      editarConteudo.value = item.conteudo;
-    }
-  });
+  editarConteudo.value = listaTODO.habilitarEditar(id);
   editarItem.value = id;
 }
 // TODO Riscar o elemento (CR[U]D)
 const feitoNaLista = (id: number) : void => {
-  lista.value.map(item => {
-    if (item.id === id) {
-      item.feito = !item.feito;
-    }
-  })
+  listaTODO.feito(id);
 }
 
 const listaOrdenada = computed(
-  () => ([...lista.value].sort((a, b) => a.prioridade - b.prioridade))
+  () => ([...lista.value.getLista].sort((a, b) => a.prioridade - b.prioridade))
 );
 
 </script>
