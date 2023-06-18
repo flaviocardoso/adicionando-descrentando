@@ -3,8 +3,9 @@
 .HeaderStyle {
   background-color: black;
   display: grid;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-content: center;
   .HeaderTitulo {
     color: $color-background;
     font-size: 30px;

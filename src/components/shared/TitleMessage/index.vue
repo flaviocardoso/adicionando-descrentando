@@ -4,19 +4,12 @@
     </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 
-  import { defineComponent, PropType } from 'vue'
-
-  const TitleMessage = defineComponent({
-    name: "TitleMessage",
-    props: {
-      msg: {
-        type: String
-      }
+const props = defineProps({
+  msg: {
+      type: String
     }
-  });
+});
 
-  export default TitleMessage;
-
-  </script>
+</script>

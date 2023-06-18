@@ -3,12 +3,7 @@
     <slot></slot>
   </div>
 </template>
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  export default defineComponent({
-    name: "BlockVue"
-  });
-</script>
+<script setup lang="ts"></script>
 <style scope lang="scss">
   @import './_.scss';
 </style>

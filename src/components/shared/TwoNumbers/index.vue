@@ -27,66 +27,46 @@
     </Card>
   </div>
 </template>
-<script lang="ts">
-  import { defineComponent, ref } from 'vue';
-  import Block from '../Block';
-  import Button from '../Button';
-  import Card from '../Card';
-  import TextCenter from '../TextCenter';
+<script setup lang="ts">
+import { ref } from 'vue';
+import Block from '../Block';
+import Button from '../Button';
+import Card from '../Card';
+import TextCenter from '../TextCenter';
 
-  const opMathFunc = {
-    "+" : (a: number, b: number) => a + b,
-    "-" : (a: number, b: number) => Number((a - b).toFixed(9)),
-    "*" : (a: number, b: number) => Number((a * b).toFixed(9)),
-    "/" : (a: number, b: number) => Number((a / b).toFixed(9))
-  }
+const opMathFunc = {
+  "+" : (a: number, b: number) => a + b,
+  "-" : (a: number, b: number) => Number((a - b).toFixed(9)),
+  "*" : (a: number, b: number) => Number((a * b).toFixed(9)),
+  "/" : (a: number, b: number) => Number((a / b).toFixed(9))
+}
 
-  type OPMATH = "+" | "-" | "*" | "/";
+type OPMATH = "+" | "-" | "*" | "/";
 
-  const opMathValues = {
-    "+" : "ADICIONAR",
-    "-" : "DIMINIR",
-     "*" :  "MULTIPLICAR",
-    "/" : "DIVIDIR"
-  }
+const opMathValues = {
+  "+" : "ADICIONAR",
+  "-" : "DIMINIR",
+    "*" :  "MULTIPLICAR",
+  "/" : "DIVIDIR"
+}
 
-  export default defineComponent({
-    name: "TwoNumbers",
-    setup() {
-      const pNumero = ref<number>(0);
-      const sNumero = ref<number>(0);
-      const op = ref<OPMATH>('+');
-      const resultado = ref<number>();
-      const opValues = ref(opMathValues);
+const pNumero = ref<number>(0);
+const sNumero = ref<number>(0);
+const op = ref<OPMATH>('+');
+const resultado = ref<number>();
+const opValues = ref(opMathValues);
 
-      function acaoIgual(): void {
-        // TODO let valorOp = op.value as OPMATH;
-        resultado.value = opMathFunc[op.value](pNumero.value, sNumero.value)
-      }
+const acaoIgual = (): void => {
+// TODO let valorOp = op.value as OPMATH;
+  resultado.value = opMathFunc[op.value](pNumero.value, sNumero.value)
+}
 
-      const acaoLimpar = (): void => {
-        pNumero.value = 0;
-        sNumero.value = pNumero.value;
-        resultado.value = undefined;
-      }
+const acaoLimpar = (): void => {
+  pNumero.value = 0;
+  sNumero.value = pNumero.value;
+  resultado.value = undefined;
+}
 
-      return {
-        opValues,
-        pNumero,
-        sNumero,
-        op,
-        resultado,
-        acaoIgual,
-        acaoLimpar
-      }
-    },
-    components: {
-        TextCenter,
-        Block,
-        Card,
-        Button
-    }
-  });
 </script>
 <style scoped lang="scss">
   @import './_.scss';

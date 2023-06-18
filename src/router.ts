@@ -1,7 +1,29 @@
-import { createRouter, createWebHashHistory, createWebHistory } from "vue-router";
+import { createRouter, RouteRecord , createWebHashHistory, createWebHistory, RouteLocationNormalized, RouteRecordRaw,  } from "vue-router";
 import Home from "@/views/Home";
+const teste = [
+  {
+    id: 1,
+    name: 'first',
+    details: 'Este é a primeira rota'
+  },
+  {
+    id: 2,
+    name: 'second',
+    details: 'Este é a segunda rota'
+  },
+  {
+    id: 3,
+    name: 'third',
+    details: 'Este é a terceira rota'
+  },
+  {
+    id: 4,
+    name: 'fourth',
+    details: 'Este é a quarta rota'
+  }
+];
 
-const routes = [
+const routes : Array<RouteRecordRaw>  = [
   {
     path: '/',
     name: 'Home',
@@ -30,7 +52,21 @@ const routes = [
   {
     path: '/parametros/:id/:slug',
     name: 'parametros.mostrar',
-    component: () => import(/* webpackChunckName: "paramentos_filho" */"@/components/shared/RotasParametos")
+    component: () => import("@/components/shared/RotasParametos"),
+    beforeEnter(to: RouteLocationNormalized, from: RouteLocationNormalized){
+      const exist = teste.find(t => t.id === parseInt(to.params.id as string))
+      if (!exist) return {
+        name: 'NotFound',
+        params: { pathMatch: to.path.split('/').slice(1) },
+        query: to.query,
+        hash: to.hash
+      }
+    }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import(/* webpackChunckName: "paramentos_filho" */"@/views/NotFound")
   }
 ];
 

@@ -6,28 +6,14 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 
-  import { defineComponent, ref, onMounted } from 'vue';
-  import { useCount } from '@/stores/count';
-  import TextCenter from '../TextCenter/index.vue';
+import { ref } from 'vue';
+import { useCount } from '@/stores/count';
+import TextCenter from '../TextCenter/index.vue';
 
-  const ShowCount = defineComponent({
-    name: "ShowCount",
-    setup() {
-      const count = useCount()
-      let numero = ref(count);
-
-      return {
-        numero
-      }
-    },
-    components: {
-      TextCenter
-    },
-  });
-
-  export default ShowCount;
+const count = useCount()
+let numero = ref(count);
 
 </script>
 <style scoped lang="scss">

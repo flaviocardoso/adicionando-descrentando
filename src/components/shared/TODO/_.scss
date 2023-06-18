@@ -56,33 +56,39 @@
     padding: 0;
     > :nth-child(2n) {
       background-color: rgba($color: rgb(247, 247, 247), $alpha: 1.0);
+      input[type=text] {
+        background-color: rgba($color: rgb(237, 237, 237), $alpha: 1.0);
+      }
     }
     > :nth-child(2n+1) {
       background-color: rgba($color: rgb(203, 203, 203), $alpha: 1.0);
+      input[type=text] {
+        background-color: rgba($color: rgb(248, 247, 247), $alpha: 1.0);
+      }
     }
   }
   &__item {
     list-style: none;
     border-bottom: 1px solid rgba(#000000, .5);
-    input[type=checkbox] {
-      visibility: hidden;
+    input[type=text], span {
+      width: 100%;
+      padding: .7rem 1.5rem;
+      margin: auto;
     }
     input[type=text] {
-      margin: auto;
-      padding: 3px 5px;
-      width: 95%;
       border: 0;
       border-radius: 5px;
-      margin: .3rem 1rem;
     }
-    label {
+    span {
       display: inline-block;
-      width: 95%;
-      padding: 1rem;
-      margin: auto;
     }
     :nth-last-child(2){
       margin-left: 1.3rem;
     }
   }
+}
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }

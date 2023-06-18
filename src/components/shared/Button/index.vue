@@ -8,18 +8,14 @@
     <slot></slot>
   </button>
 </template>
-<script lang="ts">
+<script setup lang="ts">
 
-  import { defineComponent, PropType } from 'vue';
-
-  export default defineComponent({
-    name: "ButtonVue",
-    props: {
-      type: String,
-      disabled: Boolean,
-      callback: Function as PropType<(e: any) => void>
-    }
-  })
+import { PropType } from 'vue';
+const props = defineProps({
+  type: String,
+  disabled: Boolean,
+  callback: Function as PropType<(e: any) => void>
+})
 
 </script>
 <style scoped lang="scss">

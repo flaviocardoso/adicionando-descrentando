@@ -11,14 +11,7 @@
     </div>
   </div>
 </template>
-  <script lang="ts">
-    import { defineComponent } from 'vue';
-
-    const Card = defineComponent({
-      name: "CardVue"
-    });
-    export default Card;
-  </script>
+<script setup lang="ts"></script>
 <style scoped lang="scss">
   @import './_.scss';
 </style>

@@ -1,8 +1,8 @@
 import { defineComponent } from 'vue';
 
-import Header from '@/components/Header/index.vue';
-import Main from '@/components/Main/index.vue';
-import Footer from '@/components/Footer/index.vue';
+import Header from '@/components/Header';
+import Main from '@/components/Main';
+import Footer from '@/components/Footer';
 
 interface ICard {
   title?: string,

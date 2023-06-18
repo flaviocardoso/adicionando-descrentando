@@ -4,38 +4,18 @@
   </Block>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 
-import { defineComponent } from 'vue'
+import { ref } from 'vue'
 import { useCount } from '@/stores/count'
 import Button from '../Button';
 import Block from '../Block';
 
-const data = { titulo: "Limpar" }
+const data = ref({ titulo: "Limpar" })
+const store = useCount()
 
-const ClearCount = defineComponent({
-  name: "ClearCount",
-  data() {
-    return {
-      data
-    }
-  },
-  setup() {
-    const store = useCount()
-
-    function limpar() {
-      store.clear();
-    }
-    return {
-      limpar,
-    }
-  },
-  components: {
-    Button,
-    Block
-  }
-});
-
-export default ClearCount;
+const limpar = (): void => {
+  store.clear();
+}
 
 </script>

@@ -4,40 +4,18 @@
   </Block>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 
-import { defineComponent } from 'vue';
+import { ref } from 'vue';
 import { useCount } from '@/stores/count';
 import Button from '../Button';
 import Block from '../Block';
 
-const data = { titulo: "Acrescente" }
+const data = ref({ titulo: "Acrescente" })
+const store = useCount()
 
-const AddCount = defineComponent({
-  name: "AddCount",
-  data() {
-    return {
-      data
-    }
-  },
-  setup() {
-    const store = useCount()
-
-    function add() {
-      store.increment()
-    }
-
-    return {
-      store,
-      add,
-    }
-  },
-  components: {
-    Button,
-    Block
-  },
-});
-
-export default AddCount;
+const add = (): void => {
+  store.increment()
+}
 
 </script>

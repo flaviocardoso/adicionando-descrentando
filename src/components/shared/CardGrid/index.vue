@@ -3,19 +3,7 @@
     <slot></slot>
   </section>
 </template>
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import Count from '../Count';
-  import TwoNumbers from '../TwoNumbers';
-
-  export default defineComponent({
-    name: "CardGridVue",
-    components: {
-      Count,
-      TwoNumbers
-    }
-  });
-</script>
+<script setup lang="ts"></script>
 <style scoped lang="scss">
   @import './_.scss';
 </style>
