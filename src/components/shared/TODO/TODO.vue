@@ -5,7 +5,7 @@
       <form
           class="TODOStyle__form"
           id="listaform_item"
-          @submit.prevent="adicionarNaLista">
+          @submit.prevent="adicionarItem">
           &nbsp;
         <input
           type="text"
@@ -44,35 +44,35 @@
           v-for="(item, index) in listaOrdenada"
           :key="item.id"
         >
-          <template v-if="editarItem == item.id">
+          <template v-if="itemEditavel == item.id">
             <input
               type="text"
-              v-model.trim="editarConteudo"
+              v-model.trim="conteudoEditavel"
             />
             <button
               title="Editar o conteúdo"
-              :disabled="editarConteudo.length < 5"
-              @click="editarNaLista(item.id)">
+              :disabled="conteudoEditavel.length < 5"
+              @click="editarItem(item.id)">
               <LapisUpdate/>
             </button>
           </template>
           <template v-else>
             <span
               class="prevent-select"
-              @click="feitoNaLista(item.id)"
+              @click="marcarItemFeito(item.id)"
               :for="'conteudoeditavel' + item.id"
               :class="{TODOStyle__riscar : item.feito}">
               {{ item.conteudo }}
             </span>
             <button
               title="Habilite para editar o conteúdo"
-              @click="editarHabilitar(item.id)">
+              @click="habilitarItemEditar(item.id)">
               <LapisUpdate/>
             </button>
           </template>
           <button
             title="Remova o item"
-            @click="removerNaLista(item.id)">
+            @click="removerItem(item.id)">
             <LixoDelete />
           </button>
         </li>
@@ -90,10 +90,10 @@ const storeLista = useTODO();
 const titleTODO = ref("Lista TODO");
 const conteudo = ref<string>("");
 const prioridade = ref<number>(1);
-const editarItem = ref();
-const editarConteudo = ref("");
+const itemEditavel = ref();
+const conteudoEditavel = ref("");
 
-const adicionarNaLista = (): void => {
+const adicionarItem = (): void => {
   let item = {
     conteudo: conteudo.value,
     prioridade: prioridade.value,
@@ -103,19 +103,22 @@ const adicionarNaLista = (): void => {
   conteudo.value = "";
   prioridade.value = 1;
 };
-const removerNaLista = (id: number) : void => {
+const removerItem = (id: number) : void => {
   storeLista.remover(id);
 }
-const editarNaLista = (id: number) : void => {
-  storeLista.editar(id, editarConteudo.value);
-  editarConteudo.value = "";
-  editarItem.value = "";
+const limparLista = (): void => {
+  storeLista.clear();
 }
-const editarHabilitar = (id: number) : void => {
-  editarConteudo.value = storeLista.buscarConteudo(id);
-  editarItem.value = id;
+const editarItem = (id: number) : void => {
+  storeLista.editar(id, conteudoEditavel.value);
+  conteudoEditavel.value = "";
+  itemEditavel.value = "";
 }
-const feitoNaLista = (id: number) : void => {
+const habilitarItemEditar = (id: number) : void => {
+  conteudoEditavel.value = storeLista.buscarConteudo(id);
+  itemEditavel.value = id;
+}
+const marcarItemFeito = (id: number) : void => {
   storeLista.feito(id);
 }
 const listaOrdenada = computed(
