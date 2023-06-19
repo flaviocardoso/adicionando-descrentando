@@ -86,7 +86,7 @@ import LapisUpdate from '@/components/shared/IconUpdate.vue';
 import LixoDelete from '@/components/shared/IconDelete.vue';
 import { useTODO } from '@/stores/todo';
 
-const listaTODO = useTODO();
+const storeLista = useTODO();
 const titleTODO = ref("Lista TODO");
 const conteudo = ref<string>("");
 const prioridade = ref<number>(1);
@@ -98,29 +98,28 @@ const adicionarNaLista = (): void => {
     conteudo: conteudo.value,
     prioridade: prioridade.value,
   }
-  listaTODO.adicionar(item);
+  storeLista.adicionar(item);
 
   conteudo.value = "";
   prioridade.value = 1;
 };
 const removerNaLista = (id: number) : void => {
-  listaTODO.remover(id);
+  storeLista.remover(id);
 }
 const editarNaLista = (id: number) : void => {
-  listaTODO.editar(id, editarConteudo.value);
+  storeLista.editar(id, editarConteudo.value);
   editarConteudo.value = "";
   editarItem.value = "";
 }
 const editarHabilitar = (id: number) : void => {
-  editarConteudo.value = listaTODO.buscarConteudo(id);
+  editarConteudo.value = storeLista.buscarConteudo(id);
   editarItem.value = id;
 }
 const feitoNaLista = (id: number) : void => {
-  listaTODO.feito(id);
+  storeLista.feito(id);
 }
-
 const listaOrdenada = computed(
-  () => ([...listaTODO.getLista].sort((a, b) => a.prioridade - b.prioridade))
+  () => ([...storeLista.getLista].sort((a, b) => a.prioridade - b.prioridade))
 );
 
 </script>
