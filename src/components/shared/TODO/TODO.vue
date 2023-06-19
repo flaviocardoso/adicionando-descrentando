@@ -117,7 +117,7 @@ const editarNaLista = (id: number) : void => {
 }
 // TODO Editar Habilidado
 const editarHabilitar = (id: number) : void => {
-  editarConteudo.value = listaTODO.habilitarEditar(id);
+  editarConteudo.value = listaTODO.buscarConteudo(id);
   editarItem.value = id;
 }
 // TODO Riscar o elemento (CR[U]D)

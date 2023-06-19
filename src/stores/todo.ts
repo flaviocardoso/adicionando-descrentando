@@ -36,7 +36,7 @@ export const useTODO = defineStore({
             }
           });
         },
-        habilitarEditar (id: number): string {
+        buscarConteudo (id: number): string {
          let item = this.lista.filter(item => item.id === id);
          return item[0].conteudo;
         },
