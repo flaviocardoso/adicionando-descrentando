@@ -88,13 +88,11 @@ import { useTODO } from '@/stores/todo';
 
 const listaTODO = useTODO();
 const titleTODO = ref("Lista TODO");
-const lista = ref(listaTODO);
 const conteudo = ref<string>("");
 const prioridade = ref<number>(1);
 const editarItem = ref();
 const editarConteudo = ref("");
 
-// TODO Adicianr itens na lista ([C]RUD)
 const adicionarNaLista = (): void => {
   let item = {
     conteudo: conteudo.value,
@@ -105,28 +103,24 @@ const adicionarNaLista = (): void => {
   conteudo.value = "";
   prioridade.value = 1;
 };
-// TODO Remover da lista (CRU[D])
 const removerNaLista = (id: number) : void => {
   listaTODO.remover(id);
 }
-// TODO Editar o conteúdo (CR[U]D)
 const editarNaLista = (id: number) : void => {
   listaTODO.editar(id, editarConteudo.value);
   editarConteudo.value = "";
   editarItem.value = "";
 }
-// TODO Editar Habilidado
 const editarHabilitar = (id: number) : void => {
   editarConteudo.value = listaTODO.buscarConteudo(id);
   editarItem.value = id;
 }
-// TODO Riscar o elemento (CR[U]D)
 const feitoNaLista = (id: number) : void => {
   listaTODO.feito(id);
 }
 
 const listaOrdenada = computed(
-  () => ([...lista.value.getLista].sort((a, b) => a.prioridade - b.prioridade))
+  () => ([...listaTODO.getLista].sort((a, b) => a.prioridade - b.prioridade))
 );
 
 </script>
