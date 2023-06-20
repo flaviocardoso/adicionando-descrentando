@@ -1,7 +1,11 @@
 .TODOStyle {
+  > header {
+    display: inline-block;
+    background-color: rgba($color: #d3d2d2, $alpha: 0.5);
+  }
   &__titulo {
     margin: 0;
-    padding: .5rem 1rem;
+    padding: .5rem 0rem;
     font-weight: bold;
     font-size: 1.8rem;
     color: rgba($color: #231818, $alpha: 0.75);
@@ -9,6 +13,13 @@
     &::after, &::before {
       content: ' + ';
     }
+  }
+  &__cleaner {
+    padding: .5rem 1rem;
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: rgba($color: #231818, $alpha: 0.75);
+
   }
   &__form {
     padding: 10px 0;

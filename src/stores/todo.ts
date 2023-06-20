@@ -1,5 +1,8 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
 import ILista from '@/interfaces/ILista';
+import Store from '@/services/store';
+
+const dadosTODO = new Store<ILista[]>('todo');
 
 const pegarUltimoItemId = (lista: ILista[]): number => {
   const lastItem = [...lista].shift();
@@ -11,23 +14,23 @@ const pegarUltimoItemId = (lista: ILista[]): number => {
 export const useTODO = defineStore({
     id: 'todo',
     state: () => ({
-        lista: [] as ILista[]
+        lista: dadosTODO.pegarDados() as ILista[] || [] as ILista[]
     }),
     actions: {
         adicionar (item: { conteudo: string, prioridade: number }) {
           const id = pegarUltimoItemId(this.lista);
-          this.lista = [
-            {
-              id: id,
-              conteudo: item.conteudo,
-              prioridade: item.prioridade,
-              feito: false
-            },
-            ...this.lista,
-          ]
+          const itemTODO = {
+            id: id,
+            conteudo: item.conteudo,
+            prioridade: item.prioridade,
+            feito: false
+          };
+          this.lista = [itemTODO, ...this.lista];
+          dadosTODO.salvarDados(this.lista);
         },
         remover (id: number) {
           this.lista = this.lista.filter(item => item.id !== id)
+          dadosTODO.salvarDados(this.lista)
         },
         editar (id: number, conteudo: string) {
           this.lista.map(item => {
@@ -35,6 +38,7 @@ export const useTODO = defineStore({
               item.conteudo = conteudo;
             }
           });
+          dadosTODO.salvarDados(this.lista)
         },
         buscarConteudo (id: number): string {
          let item = this.lista.filter(item => item.id === id);
@@ -46,13 +50,16 @@ export const useTODO = defineStore({
               item.feito = !item.feito;
             }
           })
+          dadosTODO.salvarDados(this.lista)
         },
         clear() {
-            this.lista = []
+          this.lista = []
+          dadosTODO.apagarDados()
         }
     },
     getters: {
       getLista: (state) => state.lista,
+      empty: (state) => state.lista.length == 0
     }
 });
 

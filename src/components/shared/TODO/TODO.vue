@@ -1,7 +1,10 @@
 <template>
   <div class="TODOStyle">
     <header>
-      <h3 class="TODOStyle__titulo">{{ titleTODO }}</h3>
+        <span class="TODOStyle__titulo">{{ titleTODO }}</span>
+        <button @dblclick="limparLista" class="TODOStyle__cleaner">Apagar lista</button>
+    </header>
+    <main class="TODOStyleConteudo">
       <form
           class="TODOStyle__form"
           id="listaform_item"
@@ -36,48 +39,48 @@
           adicionar
         </button>
       </form>
-    </header>
-    <section class="TODOStyle__conteudo">
-      <ul class="TODOStyle__lista">
-        <li
-          class="TODOStyle__item"
-          v-for="(item, index) in listaOrdenada"
-          :key="item.id"
-        >
-          <template v-if="itemEditavel == item.id">
-            <input
-              type="text"
-              v-model.trim="conteudoEditavel"
-            />
+      <section class="TODOStyle__conteudo">
+        <ul class="TODOStyle__lista">
+          <li
+            class="TODOStyle__item"
+            v-for="(item, index) in listaOrdenada"
+            :key="item.id"
+          >
+            <template v-if="itemEditavel == item.id">
+              <input
+                type="text"
+                v-model.trim="conteudoEditavel"
+              />
+              <button
+                title="Editar o conteúdo"
+                :disabled="conteudoEditavel.length < 5"
+                @click="editarItem(item.id)">
+                <LapisUpdate/>
+              </button>
+            </template>
+            <template v-else>
+              <span
+                class="prevent-select"
+                @click="marcarItemFeito(item.id)"
+                :for="'conteudoeditavel' + item.id"
+                :class="{TODOStyle__riscar : item.feito}">
+                {{ item.conteudo }}
+              </span>
+              <button
+                title="Habilite para editar o conteúdo"
+                @click="habilitarItemEditar(item.id)">
+                <LapisUpdate/>
+              </button>
+            </template>
             <button
-              title="Editar o conteúdo"
-              :disabled="conteudoEditavel.length < 5"
-              @click="editarItem(item.id)">
-              <LapisUpdate/>
+              title="Remova o item"
+              @click="removerItem(item.id)">
+              <LixoDelete />
             </button>
-          </template>
-          <template v-else>
-            <span
-              class="prevent-select"
-              @click="marcarItemFeito(item.id)"
-              :for="'conteudoeditavel' + item.id"
-              :class="{TODOStyle__riscar : item.feito}">
-              {{ item.conteudo }}
-            </span>
-            <button
-              title="Habilite para editar o conteúdo"
-              @click="habilitarItemEditar(item.id)">
-              <LapisUpdate/>
-            </button>
-          </template>
-          <button
-            title="Remova o item"
-            @click="removerItem(item.id)">
-            <LixoDelete />
-          </button>
-        </li>
-      </ul>
-    </section>
+          </li>
+        </ul>
+      </section>
+    </main>
   </div>
 </template>
 <script setup lang="ts">
