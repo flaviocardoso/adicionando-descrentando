@@ -1,15 +1,24 @@
 <template>
-  <nav>
-    <AppLink to="/">Home</AppLink> >
-    <AppLink
-      v-for="info in source"
-      :key="info.id"
-      :to="`/${info.slug}`">
-         {{ info.name }} &nbsp;
-    </AppLink>
-    <AppLink to="https://google.com.br">Google</AppLink>
+  <nav class="Nav_Style">
+    <div class="home">
+      <AppLink to="/">Home</AppLink>
+    </div>
+    <div class="interno">
+      <AppLink
+        v-for="info in source"
+        :key="info.id"
+        :to="`/${info.slug}`">
+           {{ info.name }} &nbsp;
+      </AppLink>
+    </div>
+    <div class="externo">
+      <AppLink to="https://google.com.br">Google</AppLink>
+    </div>
   </nav>
 </template>
 <script setup lang="ts">
 import source from '@/data.json';
 </script>
+<style scoped lang="scss">
+@import './_.scss';
+</style>

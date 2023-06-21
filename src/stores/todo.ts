@@ -30,7 +30,6 @@ export const useTODO = defineStore({
     },
     remover (id: number) {
       todostore.value = this.lista = this.lista.filter(item => item.id !== id)
-
     },
     editar (id: number, conteudo: string) {
       this.lista.map(item => {

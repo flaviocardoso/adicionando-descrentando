@@ -36,5 +36,10 @@
         "name": "quarto"
       }
     ]
+  },
+  {
+    "id": 6,
+    "slug": "calculadora",
+    "name": "Calculadora"
   }
 ]

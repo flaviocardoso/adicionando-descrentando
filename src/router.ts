@@ -64,6 +64,11 @@ const routes : Array<RouteRecordRaw>  = [
     }
   },
   {
+    path: '/calculadora',
+    name: 'Calculadora',
+    component: () => import(/* webpackChunckName: "parametros" */"@/views/Calculadora")
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import(/* webpackChunckName: "paramentos_filho" */"@/views/NotFound")

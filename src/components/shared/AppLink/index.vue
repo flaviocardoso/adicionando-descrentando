@@ -37,5 +37,10 @@ const { navigate, href, route, isActive, isExactActive } = useLink(props);
 const isExternal = computed(
   () => typeof props.to === 'string' && props.to.startsWith('http')
 )
+const activeClass = 'activeClass';
+const inactiveClass = 'inactiveClass';
 
 </script>
+<style scoped lang="scss">
+@import './_.scss';
+</style>

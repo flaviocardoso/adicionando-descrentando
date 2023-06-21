@@ -1,25 +1,26 @@
 <template>
   <main class="MainStyle">
-    <br>
     <MyNavegation />
-    <br>
     <!-- <router-view></router-view> -->
-    <router-view
-      v-slot="{Component}"
-    >
-      <transition name="fade" mode="out-in">
-        <component
-          :is="Component"
-          :key="$route.path">
-        </component>
-      </transition>
-    </router-view>
+    <div class="conteudo">
+      <router-view
+        v-slot="{Component}"
+      >
+        <transition name="fade" mode="out-in">
+          <component
+            :is="Component"
+            :key="$route.path">
+          </component>
+        </transition>
+      </router-view>
+    </div>
   </main>
 </template>
 <script setup lang="ts">
 import MyNavegation from '../MyNavegation';
 </script>
 <style scoped lang="scss">
+@import './_.scss';
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s;
