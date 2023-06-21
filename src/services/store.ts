@@ -1,24 +1,20 @@
 
 class Store<T> {
-  nome: string;
+  constructor(private nome: string) {}
 
-  constructor(nome: string) {
-    this.nome = nome;
-  }
-
-  salvarDados(dados: T) {
+  set salvar(dados: T) {
     const dadosString = JSON.stringify(dados);
     localStorage.setItem(this.nome, dadosString);
   }
 
-  pegarDados(): any {
+  get pegar(): any {
     const dadosString = localStorage.getItem(this.nome);
     if (dadosString) {
       return JSON.parse(dadosString);
     }
   }
 
-  apagarDados(): void {
+  apagar(): void {
     localStorage.removeItem(this.nome)
   }
 }

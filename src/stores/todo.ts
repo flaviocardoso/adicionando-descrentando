@@ -2,7 +2,8 @@ import { acceptHMRUpdate, defineStore } from "pinia";
 import ILista from '@/interfaces/ILista';
 import Store from '@/services/store';
 
-const dadosTODO = new Store<ILista[]>('todo');
+const NOME_STORE_TODO = 'TESTE_API_LOCAL_TODO'
+const dados = new Store<ILista[]>(NOME_STORE_TODO);
 
 const pegarUltimoItemId = (lista: ILista[]): number => {
   const lastItem = [...lista].shift();
@@ -14,7 +15,7 @@ const pegarUltimoItemId = (lista: ILista[]): number => {
 export const useTODO = defineStore({
     id: 'todo',
     state: () => ({
-        lista: dadosTODO.pegarDados() as ILista[] || [] as ILista[]
+        lista: dados.pegar as ILista[] || [] as ILista[]
     }),
     actions: {
         adicionar (item: { conteudo: string, prioridade: number }) {
@@ -26,11 +27,11 @@ export const useTODO = defineStore({
             feito: false
           };
           this.lista = [itemTODO, ...this.lista];
-          dadosTODO.salvarDados(this.lista);
+          dados.salvar = this.lista
         },
         remover (id: number) {
           this.lista = this.lista.filter(item => item.id !== id)
-          dadosTODO.salvarDados(this.lista)
+          dados.salvar = this.lista
         },
         editar (id: number, conteudo: string) {
           this.lista.map(item => {
@@ -38,7 +39,7 @@ export const useTODO = defineStore({
               item.conteudo = conteudo;
             }
           });
-          dadosTODO.salvarDados(this.lista)
+          dados.salvar = this.lista
         },
         buscarConteudo (id: number): string {
          let item = this.lista.filter(item => item.id === id);
@@ -50,11 +51,11 @@ export const useTODO = defineStore({
               item.feito = !item.feito;
             }
           })
-          dadosTODO.salvarDados(this.lista)
+          dados.salvar = this.lista
         },
         clear() {
           this.lista = []
-          dadosTODO.apagarDados()
+          dados.apagar()
         }
     },
     getters: {
