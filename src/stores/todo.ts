@@ -58,7 +58,7 @@ export const useTODO = defineStore({
   },
   getters: {
     getLista: (state) => state.lista,
-    empty: (state) => state.lista.length == 0
+    empty: () => todostore.value.length == 0
   }
 });
 
