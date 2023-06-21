@@ -39,7 +39,10 @@
           adicionar
         </button>
       </form>
-      <section class="TODOStyle__conteudo">
+      <section class="TODOStyle__conteudo" v-if="listaVazia">
+        <ul class="TODOStyle__lista"><li class="TODOStyle__item">Lista vazia</li></ul>
+      </section>
+      <section class="TODOStyle__conteudo" v-else>
         <ul class="TODOStyle__lista">
           <li
             class="TODOStyle__item"
@@ -84,7 +87,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import LapisUpdate from '@/components/shared/IconUpdate.vue';
 import LixoDelete from '@/components/shared/IconDelete.vue';
 import { useTODO } from '@/stores/todo';
@@ -124,6 +127,7 @@ const habilitarItemEditar = (id: number) : void => {
 const marcarItemFeito = (id: number) : void => {
   storeLista.feito(id);
 }
+const listaVazia = computed(() => storeLista.empty)
 const listaOrdenada = computed(
   () => ([...storeLista.getLista].sort((a, b) => a.prioridade - b.prioridade))
 );
