@@ -2,6 +2,7 @@
   <a
     v-if="isExternal"
     :="$attrs"
+    class="externalClass"
     :href="to"
     target="_blank">
     <slot />

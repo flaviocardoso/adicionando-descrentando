@@ -10,6 +10,7 @@
     </div>
     <div class="externo">
       <AppLink to="https://google.com.br">Google</AppLink>
+      <AppLink to="http://192.168.2.101:5173">External</AppLink>
     </div>
   </nav>
 </template>
