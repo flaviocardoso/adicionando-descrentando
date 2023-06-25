@@ -1,8 +1,8 @@
 <template>
   <nav class="Nav_Style">
-    <div class="home">
+    <span class="home">
       <AppLink to="/">Home</AppLink>
-    </div>
+    </span>
     <div class="interno">
       <AppLink
         v-for="info in source"
