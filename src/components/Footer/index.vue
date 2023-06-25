@@ -1,6 +1,8 @@
 <template>
-  <footer class="FooterStyle">
-    <h1>&copy;flaviocardoso</h1>
+  <footer>
+    <div class="FooterStyle">
+      <h1>&copy;flaviocardoso</h1>
+    </div>
   </footer>
 </template>
 <script setup lang="ts"></script>

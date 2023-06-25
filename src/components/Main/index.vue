@@ -1,7 +1,5 @@
 <template>
   <main class="MainStyle">
-    <MyNavegation />
-    <!-- <router-view></router-view> -->
     <div class="conteudo">
       <router-view
         v-slot="{Component}"

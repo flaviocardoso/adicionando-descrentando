@@ -23,9 +23,6 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-	line-height: 1;
-}
 ol, ul {
 	list-style: none;
 }
@@ -41,8 +38,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-
 input {
 	font-family: inherit;
 	font-size: inherit;
@@ -65,6 +60,14 @@ button {
 	padding: 0;
 	box-sizing: border-box;
 	text-decoration: none;
+}
+html, body {
+	width: 100vw;
+	height: 100vh;
+}
+#app {
+  width: 100vw;
+	height: 100vh;
 }
 .prevent-select {
   -webkit-user-select: none; /* Safari */
