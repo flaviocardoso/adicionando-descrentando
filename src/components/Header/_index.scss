@@ -9,5 +9,10 @@
   .HeaderTitulo {
     color: $color-background;
     font-size: 30px;
+    &:hover {
+      color: yellowgreen;
+      border: 1px solid yellowgreen;
+      cursor: pointer;
+    }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="Calculadora_Style">
+  <div class="CalculadoraStyle">
     Calculadora
   </div>
 </template>

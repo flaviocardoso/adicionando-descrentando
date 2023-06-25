@@ -8,7 +8,7 @@
         v-for="info in source"
         :key="info.id"
         :to="`/${info.slug}`">
-           {{ info.name }} &nbsp;
+           {{ info.name }}
       </AppLink>
     </div>
     <div class="externo">

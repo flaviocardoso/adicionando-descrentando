@@ -1,9 +1,14 @@
 .activeClass, .inactiveClass {
-  background-color: black;
+  padding: 0rem .2rem;
+  background-color: rgb(0, 0, 0);
 }
 .activeClass {
   color: yellowgreen;
+  border: 1px solid yellowgreen;
 }
 .inactiveClass {
   color: white;
+  &:hover {
+    border-bottom: 1px solid rgb(208, 211, 202);
+  }
 }
