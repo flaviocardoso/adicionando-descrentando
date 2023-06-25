@@ -1,9 +1,10 @@
 .DashboardStyle {
   font-family: 'Inter', sans-serif;
-  width: 100vw;
-	height: 100vh;
+  width: 100%;
+	height: 100%;
   display: grid;
   min-height: 100%;
-  grid-template-rows: 0fr auto 0fr;
+  max-height: 100%;
+  grid-template-rows: 0fr auto 0f;
   grid-template-columns: 100%;
 }
