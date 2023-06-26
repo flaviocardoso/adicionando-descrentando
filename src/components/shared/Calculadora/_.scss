@@ -1,3 +1,39 @@
 .CalculadoraStyle {
-  background-color: aqua;
+  box-shadow: 0px 0px 2px 2px #00000076;
+  width: 200px;
+  box-sizing: border-box;
+  border: 6px solid #000000a4;
+  padding: .7rem .5rem;
+  border-radius: 12px;
+  .screen {
+    margin-top: 1rem;
+  }
+  .resultado, .conta {
+    display: block;
+    width: 99.2%;
+    border: 1px solid black;
+    padding: .2rem .5rem;
+    margin: .2rem .1rem .2rem;
+    text-align: right;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 0px;
+  }
+  .linha {
+    display: flex;
+  }
+  .normal {
+    display: table;
+    width: 25%;
+    padding: .2rem;
+  }
+  .tecla {
+    display: table-cell;
+    box-shadow: 0px 2px 0px 0px;
+    margin: auto;
+    height: 2rem;
+    border-radius: 12px;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid black;
+  }
 }
