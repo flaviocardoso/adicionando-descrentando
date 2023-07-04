@@ -1,2 +1,2 @@
-import Calculadora from "@/components/shared/Calculadora";
+import Calculadora from "./index.vue";
 export default Calculadora;
