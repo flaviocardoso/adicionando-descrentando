@@ -2,31 +2,30 @@
   <section class="CalculadoraStyle prevent-select">
     <div class="dentro">
       <span class="screen">
-        <span class="resultado">{{ conteudo }}</span>
-        <span class="conta">{{ conteudo }}</span>
+        <span class="conta" ref="conta"></span>
       </span>
       <span class="linha">
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoAction($event, 'porcentagem')"
             @mouseup="UpBotao($event)"
             id="tecla1">%</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoAction($event,'limpar')"
             @mouseup="UpBotao($event)"
             id="tecla2">C</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoAction($event,'voltar')"
             @mouseup="UpBotao($event)"
             id="tecla2">B</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoAction($event,'dividir')"
             @mouseup="UpBotao($event)"
             id="tecla3">÷</span>
         </span>
@@ -34,77 +33,78 @@
       <span class="linha">
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoNum($event)"
             @mouseup="UpBotao($event)"
             id="tecla4">7</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoNum($event)"
             @mouseup="UpBotao($event)"
             id="tecla5">8</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoNum($event)"
             @mouseup="UpBotao($event)"
             id="tecla6">9</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoAction($event, 'multiplicar')"
             @mouseup="UpBotao($event)"
-            id="tecla7">x</span>
+            id="tecla7">&times;</span>
         </span>
       </span>
       <span class="linha">
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoNum($event)"
             @mouseup="UpBotao($event)"
             id="tecla8">4</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoNum($event)"
             @mouseup="UpBotao($event)"
             id="tecla9">5</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoNum($event)"
             @mouseup="UpBotao($event)"
             id="tecla10">6</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoAction($event, 'diminuir')"
             @mouseup="UpBotao($event)"
+            data-action="diminuir"
             id="tecla11">-</span>
         </span>
       </span>
       <span class="linha">
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoNum($event)"
             @mouseup="UpBotao($event)"
             id="tecla12">1</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoNum($event)"
             @mouseup="UpBotao($event)"
             id="tecla13">2</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoNum($event)"
             @mouseup="UpBotao($event)"
             id="tecla14">3</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoAction($event, 'somar')"
             @mouseup="UpBotao($event)"
             id="tecla15">+</span>
         </span>
@@ -112,25 +112,26 @@
       <span class="linha">
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoAction($event, 'maismenos')"
             @mouseup="UpBotao($event)"
+            data-action="maismenos"
             id="tecla16">+/-</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoNum($event)"
             @mouseup="UpBotao($event)"
-            id="tecla17">0 </span>
+            id="tecla17">0</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoAction($event, 'virgular')"
             @mouseup="UpBotao($event)"
-            id="tecla18">,</span>
+            id="tecla18">.</span>
         </span>
         <span class="normal">
           <span class="tecla"
-            @mousedown="DownBotao($event)"
+            @mousedown="DownBotaoAction($event, 'calcular')"
             @mouseup="UpBotao($event)"
             id="tecla19">=</span>
         </span>
@@ -139,15 +140,101 @@
   </section>
 </template>
 <script setup lang="ts">
-  import { computed, ref } from 'vue';
-  const conteudo = ref()
+  import { ref } from 'vue';
+  const conta = ref()
+  const lastnum = ref()
+  const action = ref()
+  const operador = ref()
+  const lastoperador = ref()
+  const pc = ref(1)
 
-  const DownBotao = (event: any) : void => {
+  const DownBotaoNum = (event: any) : void => {
     const alvo = event.target;
+    const valor = alvo.textContent;
+    const tela = conta.value.textContent;
     alvo.classList.toggle('tecla-click');
-    const valor = alvo.innerHTML;
-    conteudo.value = valor;
+    if (conta.value.textContent === '0' || operador.value || action.value === 'calcular' || pc.value >= 100) {
+      conta.value.textContent = valor
+      lastoperador.value = operador.value
+      operador.value = ''
+      pc.value = 1
+      action.value = ''
+    }
+    else {
+      conta.value.textContent = tela + valor
+    }
   }
+  const DownBotaoAction = (event: any, acao: String):void => {
+    const alvo = event.target;
+    action.value = acao;
+    const tela = conta.value.textContent;
+    alvo.classList.toggle('tecla-click');
+
+    const casooperador = acao === 'dividir' || acao === 'multiplicar' || acao === 'diminuir' || acao === 'somar';
+    if (casooperador) {
+      operador.value = acao;
+      lastnum.value = tela
+    } else {
+      if (tela) {
+        switch(action.value) {
+          case 'porcentagem':
+            pc.value *= 100
+            conta.value.textContent = Math.round(tela / 100 * pc.value)/pc.value;
+          break;
+          case 'limpar':
+            operador.value = '';
+            lastnum.value = '';
+            conta.value.textContent = '';
+          break;
+          case 'voltar':
+            if (tela.length) {
+              conta.value.textContent = tela.slice(0, -1);
+            } else {
+              conta.value.textContent = tela;
+            }
+          break;
+          case 'virgular':
+            if (tela.length) {
+              if (!tela.includes('.')) {
+                conta.value.textContent = tela + ".";
+              }
+            } else {
+              conta.value.textContent = tela;
+            }
+          break;
+          case 'maismenos':
+            if (tela.length) {
+              conta.value.textContent = tela * -1;
+            } else {
+              conta.value.textContent = tela;
+            }
+          break
+          case 'calcular':
+            if (lastoperador.value) {
+              let numRound = 0;
+              switch(lastoperador.value) {
+                case 'dividir':
+                  numRound = lastnum.value / tela;
+                break;
+                case 'multiplicar':
+                  numRound = lastnum.value * tela;
+                break;
+                case 'diminuir':
+                  numRound = lastnum.value - tela;
+                break;
+                case 'somar':
+                  numRound = Number(lastnum.value) + Number(tela);
+                break;
+              }
+              conta.value.textContent = Math.round(numRound * 100)/100;
+              lastoperador.value = ''
+            }
+          break;
+        }
+      }
+    }
+  }
+
   const UpBotao = (event: any):void => {
     const alvo = event.target;
     alvo.classList.toggle('tecla-click');
