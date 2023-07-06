@@ -141,10 +141,20 @@
 </template>
 <script setup lang="ts">
   import { ref } from 'vue';
+  const opMathFunc = {
+    "somar" : (a: number, b: number) => Number(a) + Number(b),
+    "diminuir" : (a: number, b: number) => Number((a - b).toFixed(9)),
+    "multiplicar" : (a: number, b: number) => Number((a * b).toFixed(9)),
+    "dividir" : (a: number, b: number) => Number((a / b).toFixed(9)),
+    "": (a: number, b: number) => 0
+  }
+
+  type OPMATH = "somar" | "diminuir" | "multiplicar" | "dividir" | "";
+
   const conta = ref()
   const lastnum = ref()
   const action = ref()
-  const operador = ref()
+  const operador = ref<OPMATH>()
   const lastoperador = ref()
   const pc = ref(1)
 
@@ -172,7 +182,7 @@
 
     const casooperador = acao === 'dividir' || acao === 'multiplicar' || acao === 'diminuir' || acao === 'somar';
     if (casooperador) {
-      operador.value = acao;
+      operador.value = acao as OPMATH;
       lastnum.value = tela
     } else {
       if (tela) {
@@ -211,21 +221,7 @@
           break
           case 'calcular':
             if (lastoperador.value) {
-              let numRound = 0;
-              switch(lastoperador.value) {
-                case 'dividir':
-                  numRound = lastnum.value / tela;
-                break;
-                case 'multiplicar':
-                  numRound = lastnum.value * tela;
-                break;
-                case 'diminuir':
-                  numRound = lastnum.value - tela;
-                break;
-                case 'somar':
-                  numRound = Number(lastnum.value) + Number(tela);
-                break;
-              }
+              let numRound = opMathFunc[lastoperador.value as OPMATH](lastnum.value, tela)
               conta.value.textContent = Math.round(numRound * 100)/100;
               lastoperador.value = ''
             }
